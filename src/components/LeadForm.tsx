@@ -1,31 +1,43 @@
 import { useState, type FormEvent } from "react";
 
 /*
- * Lead form – UI only, NOT connected yet.
+ * Lead form – saves each submission as a row in the Supabase table `public.leads`
+ * (project "estergigi-homepage"). RLS allows the browser to INSERT only; leads are read in the Supabase dashboard.
+ * Quiz answers are stored too (`quiz_answers`).
  *
- * TODO (connect): on the original site this is an Elementor Pro form ("טופס חדש", form_id eba510b / 7a6919d on page 1306).
- *   It submits via AJAX to https://estergigi.com/wp-admin/admin-ajax.php (action "elementor_pro_forms_send_form").
- *   Action after submit (read from the page's Elementor data): EMAIL ONLY – no webhook, CRM or mailing-list integration.
- *     To:        estergigi8@gmail.com
- *     Subject:   הודעה חדשה מאת "אסתר גיגי"
- *     Body:      [all-fields]  (every field of the form)
- *     From:      email@estergigi.com, name "אסתר גיגי - לימוד יסודות התכנות"
- *   "submit_actions" is not saved on the form, so Elementor uses its default (email only). A second email
- *   (to dhygigi@gmail.com) is configured too, but it is not active unless "Email 2" is added as an action.
- *   Fields sent by the original: form_fields[name], form_fields[message] (= phone), form_fields[email],
- *   form_fields[field_b4746b0] (privacy checkbox), plus post_id=1306, form_id, queried_id=1306.
- *   The quiz answers are NOT sent by the original either (they are only logged to the console) – pass `answers` along if wanted.
+ * The original Elementor form only emailed estergigi8@gmail.com (subject: הודעה חדשה מאת "אסתר גיגי").
+ * No email is sent here – that would need an email service (e.g. Resend) in a Supabase Edge Function.
  */
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
+
 type Props = { answers?: Record<string, string> };
 
-export default function LeadForm({ answers: _answers }: Props) {
-  const [sent, setSent] = useState(false);
+export default function LeadForm({ answers = {} }: Props) {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO (connect): send new FormData(e.currentTarget) + _answers to the chosen destination.
-    setSent(true);
+    const data = new FormData(e.currentTarget);
+    setStatus("sending");
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+        method: "POST",
+        headers: { apikey: SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify({
+          name: String(data.get("name") ?? "").trim(),
+          phone: String(data.get("phone") ?? "").trim(),
+          email: String(data.get("email") ?? "").trim(),
+          privacy_consent: data.get("privacy") === "on",
+          quiz_answers: answers,
+        }),
+      });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   };
+  const sent = status === "sent";
 
   const field =
     "w-full border-0 border-b border-white bg-transparent px-0 py-2 font-dak text-white placeholder:text-white/70 focus:outline-none focus:ring-0";
@@ -50,10 +62,12 @@ export default function LeadForm({ answers: _answers }: Props) {
       </label>
       <button
         type="submit"
-        className="mt-2 w-full border border-[#020101] bg-brand-pink-2 px-6 py-3 font-dak text-white transition-opacity hover:opacity-90"
+        disabled={status === "sending"}
+        className="mt-2 w-full border border-[#020101] bg-brand-pink-2 px-6 py-3 font-dak text-white transition-opacity hover:opacity-90 disabled:opacity-60"
       >
-        קדימה אני רוצה לקדם את העסק שלי!
+        {status === "sending" ? "שולחת..." : "קדימה אני רוצה לקדם את העסק שלי!"}
       </button>
+      {status === "error" && <p className="font-dak text-sm text-white">משהו השתבש בשליחה, נסי שוב בעוד רגע.</p>}
     </form>
   );
 }
