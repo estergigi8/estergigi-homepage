@@ -5,8 +5,8 @@ import { useState, type FormEvent } from "react";
  * (project "estergigi-homepage"). RLS allows the browser to INSERT only; leads are read in the Supabase dashboard.
  * Quiz answers are stored too (`quiz_answers`).
  *
- * The original Elementor form only emailed estergigi8@gmail.com (subject: הודעה חדשה מאת "אסתר גיגי").
- * No email is sent here – that would need an email service (e.g. Resend) in a Supabase Edge Function.
+ * Email: a database trigger (public.notify_new_lead) emails every new lead to estergigi8@gmail.com through Resend,
+ * like the original Elementor form did. The Resend key is stored in Supabase Vault (resend_api_key), not in this code.
  */
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
