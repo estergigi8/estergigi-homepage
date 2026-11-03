@@ -173,3 +173,48 @@
 .underline-draw path + path {
   animation-delay: 0.3s;
 }
+
+/* ---------- Accessibility menu (components/AccessibilityWidget.tsx) ---------- */
+/* Visible keyboard focus everywhere (always on, not a menu option). */
+:focus-visible {
+  outline: 3px solid #ffd400 !important;
+  outline-offset: 2px;
+}
+/* Filters go on #root, not <html>, so the fixed menu button itself stays unfiltered. */
+html.a11y-contrast #root {
+  filter: contrast(1.6);
+}
+html.a11y-grayscale #root {
+  filter: grayscale(1);
+}
+html.a11y-contrast.a11y-grayscale #root {
+  filter: contrast(1.6) grayscale(1);
+}
+/* Text size: zoom the text blocks (the design sizes text in vw, so changing the root font-size would do nothing). */
+html.a11y-text #root :is(p, li, h1, h2, h3, h4, label, button, input) {
+  zoom: 1.2;
+}
+html.a11y-links #root a {
+  text-decoration: underline !important;
+  outline: 2px solid #ffd400;
+  outline-offset: 2px;
+}
+html.a11y-font #root *:not(svg, svg *) {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+html.a11y-spacing #root :is(p, li, h1, h2, h3, h4) {
+  line-height: 1.8 !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.12em !important;
+}
+html.a11y-motion *,
+html.a11y-motion *::before,
+html.a11y-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+/* These start at opacity 0 and are revealed by their animation, so show them when animations are off. */
+html.a11y-motion :is(.animate-stamp, .animate-bounce-in) {
+  opacity: 1 !important;
+}
