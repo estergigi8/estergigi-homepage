@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Custom fonts (from Kit 5, files in /public/fonts) ---------- */
+@font-face {
+  font-family: "Open Sans דק";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("/fonts/OpenSans_Condensed-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans בינוני";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("/fonts/OpenSansHebrewCondensed-Bold-1.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans עבה";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("/fonts/OpenSans_Condensed-ExtraBold.ttf") format("truetype");
+}
+
+/* ---------- Global CSS (Kit 5 custom CSS) ---------- */
+@layer base {
+  html,
+  body {
+    overflow-x: clip;
+  }
+  body {
+    @apply bg-black text-white;
+    margin: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ff78b7;
+    border-radius: 10px;
+  }
+  ::selection {
+    background: #ff78b7;
+    color: #ffffff;
+  }
+  ::-moz-selection {
+    background: #a490ff;
+    color: #ffffff;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+    line-height: 1;
+  }
+}
+
+@layer components {
+  /* Hero words: outline on hover (desktop) – from the page custom CSS */
+  .stroke-hover:hover {
+    color: transparent !important;
+    -webkit-text-stroke: 1px #000000;
+  }
+  .stroke-always {
+    color: transparent;
+    -webkit-text-stroke: 1px #000000;
+  }
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes stamp-hit {
+  0% {
+    transform: scale(6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes bounce-in {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Animated headline "double underline" – draws, holds, erases (Elementor highlight loop) */
+@keyframes draw-underline {
+  0% {
+    stroke-dashoffset: 1500;
+  }
+  25%,
+  85% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+.animate-stamp {
+  opacity: 0;
+  animation: stamp-hit 0.2s ease-out 8s forwards;
+}
+.animate-bounce-in {
+  opacity: 0;
+  animation: bounce-in 0.75s 0.1s forwards;
+}
+/* Slight grow on hover. Uses `scale` (not `transform`) so it doesn't fight the entrance animations' held transform. */
+.hover-grow {
+  transition: scale 0.3s ease-out;
+}
+.hover-grow:hover {
+  scale: 1.05;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+.animate-rotate-slow {
+  animation: rotate 20s linear infinite;
+}
+.underline-draw path {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  animation: draw-underline 4.8s ease-in-out infinite;
+}
+.underline-draw path + path {
+  animation-delay: 0.3s;
+}
