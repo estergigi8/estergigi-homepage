@@ -85,8 +85,7 @@ export default function WhyMe() {
                 </span>
                 <span
                   className={`text-center font-beinoni text-[8vw] font-bold leading-none md:text-[6vw] lg:text-[3vw] ${
-                    // White fails contrast on the two light pink cards, so their titles are black.
-                    i < 2 ? "text-black" : "text-white [text-shadow:2px_2px_1px_rgba(0,0,0,0.32)]"
+                    "text-white [text-shadow:2px_2px_1px_rgba(0,0,0,0.32)]"
                   } ${shown ? "opacity-0" : "opacity-100"}`}
                 >
                   {c.title}

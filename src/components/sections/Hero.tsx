@@ -45,17 +45,17 @@ export default function Hero() {
       <div className="relative z-[1] flex w-full flex-row flex-wrap items-center px-[10px] md:flex-nowrap">
         <h1 className="flex w-full flex-row flex-wrap font-ava font-black leading-none md:w-[70vw] lg:w-[60%]">
           <span className="flex w-[45%] flex-col items-start justify-center self-start md:w-1/2 md:self-center">
-            <span className="stroke-always cursor-text text-[20vw] lg:text-[12vw] lg:text-brand-pink-dark lg:[-webkit-text-stroke:0] lg:stroke-hover">
+            <span className="stroke-always cursor-text text-[20vw] lg:text-[12vw] lg:text-brand-pink lg:[-webkit-text-stroke:0] lg:stroke-hover">
               בניית
             </span>
           </span>
           <span className="flex w-[30%] flex-col items-start justify-center self-start md:w-1/2 md:items-center md:self-center">
-            <span className="stroke-hover w-full cursor-text whitespace-nowrap pr-[15px] text-[20vw] text-brand-pink-dark md:w-auto md:self-center md:pr-[90px] lg:pr-0 lg:text-[12vw]">
+            <span className="stroke-hover w-full cursor-text whitespace-nowrap pr-[15px] text-[20vw] text-brand-pink md:w-auto md:self-center md:pr-[90px] lg:pr-0 lg:text-[12vw] lg:text-brand-pink">
               אתרים
             </span>
           </span>
           <span className="flex w-full flex-col items-start lg:items-stretch">
-            <span className="stroke-hover cursor-text self-start py-10 pl-10 text-start text-[16vw] text-brand-pink-dark md:pr-0 lg:self-end lg:py-10 lg:pl-0 lg:pr-10 lg:text-end lg:text-[12vw]">
+            <span className="stroke-hover cursor-text self-start py-10 pl-10 text-start text-[16vw] text-brand-pink md:pr-0 lg:self-end lg:py-10 lg:pl-0 lg:pr-10 lg:text-end lg:text-[12vw]">
               שמשאירים
             </span>
           </span>

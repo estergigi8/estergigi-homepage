@@ -52,7 +52,7 @@ export default function Quiz() {
                 key={o}
                 type="button"
                 onClick={() => choose(o)}
-                className="flex min-h-[18vh] w-[40vw] cursor-pointer items-center justify-center rounded-full border-[3px] border-white bg-black transition-colors hover:bg-brand-pink-dark md:min-h-[25vh] md:w-[32vw] md:border-4 lg:min-h-[40vh] lg:w-[20%]"
+                className="flex min-h-[18vh] w-[40vw] cursor-pointer items-center justify-center rounded-full border-[3px] border-white bg-black transition-colors hover:bg-brand-pink-2 md:min-h-[25vh] md:w-[32vw] md:border-4 lg:min-h-[40vh] lg:w-[20%]"
               >
                 <span className="text-center font-beinoni text-[7vw] font-medium leading-none text-white md:text-[4.5vw] lg:text-[2.6vw]">{o}</span>
               </button>
