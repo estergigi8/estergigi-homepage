@@ -66,7 +66,7 @@ export default function LeadForm({ answers = {} }: Props) {
       </label>
       <input id="lead-email" name="email" type="email" placeholder="אימייל" autoComplete="email" required className={field} />
       <label className="flex items-center gap-2 font-beinoni text-sm">
-        <input name="privacy" type="checkbox" required className="h-4 w-4 accent-brand-pink-dark" />
+        <input name="privacy" type="checkbox" required className="h-4 w-4 accent-brand-pink-2" />
         <span>
           *קראתי ואישרתי את{" "}
           <a href="/מדיניות-פרטיות" className="underline">
@@ -77,7 +77,7 @@ export default function LeadForm({ answers = {} }: Props) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-2 w-full border border-[#020101] bg-brand-pink-dark px-6 py-3 font-dak text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+        className="mt-2 w-full border border-[#020101] bg-brand-pink-2 px-6 py-3 font-dak text-white transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {status === "sending" ? "שולחת..." : "קדימה אני רוצה לקדם את העסק שלי!"}
       </button>
