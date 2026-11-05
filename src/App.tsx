@@ -17,7 +17,7 @@ import AccessibilityStatement from "./pages/AccessibilityStatement";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 
 // The other pages of the original site, by path (Hebrew slugs, trailing slash optional).
-// vercel.json rewrites every path to index.html so these load directly.
+// vercel.json rewrites exactly these paths to index.html; any other path gets public/404.html.
 const pages: Record<string, { title: string; Page: () => JSX.Element }> = {
   "/מדיניות-פרטיות": { title: "מדיניות פרטיות – אסתר גיגי", Page: PrivacyPolicy },
   "/איזה-אתר-העסק-שלי-צריך": { title: "איזה אתר העסק שלי צריך – אסתר גיגי", Page: WhichSite },
@@ -27,7 +27,13 @@ const pages: Record<string, { title: string; Page: () => JSX.Element }> = {
 export default function App() {
   const path = decodeURIComponent(window.location.pathname).replace(/\/+$/, "");
   const page = pages[path];
-  if (page) document.title = page.title;
+  if (page) {
+    document.title = page.title;
+    // Self-referencing canonical (index.html ships the homepage one). Trailing slash, like the old WordPress URLs.
+    document
+      .querySelector('link[rel="canonical"]')
+      ?.setAttribute("href", `https://estergigi.com/${encodeURIComponent(path.slice(1))}/`);
+  }
   return (
     <>
       {page ? <page.Page /> : <Home />}
