@@ -62,7 +62,7 @@
                           "permanent":  true
                       },
                       {
-                          "source":  "/author/:slug*",
+                          "source":  "/author/(.*)",
                           "destination":  "/",
                           "permanent":  true
                       }
