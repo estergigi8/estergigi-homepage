@@ -43,16 +43,30 @@ export default function LeadForm({ answers = {} }: Props) {
     "w-full border-0 border-b border-white bg-transparent px-0 py-2 font-dak text-white placeholder:text-white/70 focus:outline-none focus:ring-0";
 
   if (sent) {
-    return <p className="font-dak text-[5vw] text-white md:text-[2.5vw] lg:text-[1.3vw]">הטופס נשלח בהצלחה.</p>;
+    return (
+      <p role="status" className="font-dak text-[5vw] text-white md:text-[2.5vw] lg:text-[1.3vw]">
+        הטופס נשלח בהצלחה.
+      </p>
+    );
   }
 
   return (
     <form onSubmit={onSubmit} className="flex w-[90vw] max-w-[700px] flex-col gap-[10px] text-white" noValidate={false}>
-      <input name="name" type="text" placeholder="שם" required className={field} />
-      <input name="phone" type="tel" placeholder="טלפון" required className={field} />
-      <input name="email" type="email" placeholder="אימייל" required className={field} />
+      {/* Visually the placeholder is the label (original design); the real labels are for screen readers. */}
+      <label htmlFor="lead-name" className="sr-only">
+        שם
+      </label>
+      <input id="lead-name" name="name" type="text" placeholder="שם" autoComplete="name" required className={field} />
+      <label htmlFor="lead-phone" className="sr-only">
+        טלפון
+      </label>
+      <input id="lead-phone" name="phone" type="tel" placeholder="טלפון" autoComplete="tel" required className={field} />
+      <label htmlFor="lead-email" className="sr-only">
+        אימייל
+      </label>
+      <input id="lead-email" name="email" type="email" placeholder="אימייל" autoComplete="email" required className={field} />
       <label className="flex items-center gap-2 font-beinoni text-sm">
-        <input name="privacy" type="checkbox" required className="h-4 w-4 accent-brand-pink-2" />
+        <input name="privacy" type="checkbox" required className="h-4 w-4 accent-brand-pink-dark" />
         <span>
           *קראתי ואישרתי את{" "}
           <a href="/מדיניות-פרטיות" className="underline">
@@ -63,11 +77,15 @@ export default function LeadForm({ answers = {} }: Props) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-2 w-full border border-[#020101] bg-brand-pink-2 px-6 py-3 font-dak text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+        className="mt-2 w-full border border-[#020101] bg-brand-pink-dark px-6 py-3 font-dak text-white transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {status === "sending" ? "שולחת..." : "קדימה אני רוצה לקדם את העסק שלי!"}
       </button>
-      {status === "error" && <p className="font-dak text-sm text-white">משהו השתבש בשליחה, נסי שוב בעוד רגע.</p>}
+      {status === "error" && (
+        <p role="alert" className="font-dak text-sm text-white">
+          משהו השתבש בשליחה, נסי שוב בעוד רגע.
+        </p>
+      )}
     </form>
   );
 }
