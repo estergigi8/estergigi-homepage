@@ -26,14 +26,14 @@ export default function Intro() {
               <path
                 d="M5,125.4c30.5-3.8,137.9-7.6,177.3-7.6c117.2,0,252.2,4.7,312.7,7.6"
                 fill="none"
-                stroke="#8BA404"
+                stroke="#5A6B00"
                 strokeWidth="4"
                 vectorEffect="non-scaling-stroke"
               />
               <path
                 d="M26.9,143.8c55.1-6.1,126-6.3,162.2-6.1c46.5,0.2,203.9,3.2,268.9,6.4"
                 fill="none"
-                stroke="#8BA404"
+                stroke="#5A6B00"
                 strokeWidth="4"
                 vectorEffect="non-scaling-stroke"
               />

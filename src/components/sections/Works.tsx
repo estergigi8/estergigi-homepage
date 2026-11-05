@@ -55,7 +55,16 @@ export default function Works() {
       <div className="my-[50px] overflow-hidden">
         <div className="animate-marquee flex w-max flex-row flex-nowrap" style={{ animationDuration: "28s" }}>
           {[...posters, ...posters].map((p, i) => (
-            <img key={i} src={p} alt="" className="me-5 w-[35vw] shrink-0 object-contain md:w-[22vw] lg:me-[60px] lg:w-[15vw]" />
+            <img
+              key={i}
+              src={p}
+              alt=""
+              width={800}
+              height={1130}
+              loading="lazy"
+              decoding="async"
+              className="me-5 h-auto w-[35vw] shrink-0 object-contain md:w-[22vw] lg:me-[60px] lg:w-[15vw]"
+            />
           ))}
         </div>
       </div>

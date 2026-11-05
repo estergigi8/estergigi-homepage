@@ -100,15 +100,15 @@ export default function Faq() {
                   className="flex w-full items-center gap-[2.1vw] text-start md:gap-[1vw]"
                 >
                   <span
-                    className={`rounded-[25px_25px_0px_25px] px-[15px] py-[10px] text-[4vw] leading-none transition-all duration-300 group-hover:bg-brand-pink-2 group-hover:text-white md:rounded-[5vw_5vw_0vw_5vw] md:px-[2vw] md:py-[1vw] md:text-[2.5vw] lg:px-[1.4vw] lg:py-[0.6vw] lg:text-base ${
-                      isOpen ? "bg-brand-pink-2 text-white" : "bg-white text-black"
+                    className={`rounded-[25px_25px_0px_25px] px-[15px] py-[10px] text-[4vw] leading-none transition-all duration-300 group-hover:bg-brand-pink-dark group-hover:text-white md:rounded-[5vw_5vw_0vw_5vw] md:px-[2vw] md:py-[1vw] md:text-[2.5vw] lg:px-[1.4vw] lg:py-[0.6vw] lg:text-base ${
+                      isOpen ? "bg-brand-pink-dark text-white" : "bg-white text-black"
                     }`}
                   >
                     {f.q}
                   </span>
                   <span
-                    className={`flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full p-[5vw] transition-all duration-300 group-hover:rotate-45 group-hover:bg-brand-pink-2 md:h-[5vw] md:w-[5vw] md:p-0 lg:h-[2vw] lg:w-[2vw] ${
-                      isOpen ? "rotate-45 bg-brand-pink-2 fill-white" : "bg-white fill-black"
+                    className={`flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full p-[5vw] transition-all duration-300 group-hover:rotate-45 group-hover:bg-brand-pink-dark md:h-[5vw] md:w-[5vw] md:p-0 lg:h-[2vw] lg:w-[2vw] ${
+                      isOpen ? "rotate-45 bg-brand-pink-dark fill-white" : "bg-white fill-black"
                     } group-hover:fill-white`}
                     aria-hidden="true"
                   >
