@@ -1,3 +1,112 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+    "rewrites":  [
+                     {
+                         "source":  "/מדיניות-פרטיות",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/מדיניות-פרטיות/",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA/",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/איזה-אתר-העסק-שלי-צריך",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/איזה-אתר-העסק-שלי-צריך/",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/%D7%90%D7%99%D7%96%D7%94-%D7%90%D7%AA%D7%A8-%D7%94%D7%A2%D7%A1%D7%A7-%D7%A9%D7%9C%D7%99-%D7%A6%D7%A8%D7%99%D7%9A",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/%D7%90%D7%99%D7%96%D7%94-%D7%90%D7%AA%D7%A8-%D7%94%D7%A2%D7%A1%D7%A7-%D7%A9%D7%9C%D7%99-%D7%A6%D7%A8%D7%99%D7%9A/",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/הצהרת-נגישות",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/הצהרת-נגישות/",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA",
+                         "destination":  "/index.html"
+                     },
+                     {
+                         "source":  "/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA/",
+                         "destination":  "/index.html"
+                     }
+                 ],
+    "redirects":  [
+                      {
+                          "source":  "/:path*",
+                          "has":  [
+                                      {
+                                          "value":  "www.estergigi.com",
+                                          "type":  "host"
+                                      }
+                                  ],
+                          "destination":  "https://estergigi.com/:path*",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/author/:slug*",
+                          "destination":  "/",
+                          "permanent":  true
+                      }
+                  ],
+    "headers":  [
+                    {
+                        "source":  "/(.*)",
+                        "headers":  [
+                                        {
+                                            "key":  "X-Content-Type-Options",
+                                            "value":  "nosniff"
+                                        },
+                                        {
+                                            "key":  "Referrer-Policy",
+                                            "value":  "strict-origin-when-cross-origin"
+                                        },
+                                        {
+                                            "key":  "X-Frame-Options",
+                                            "value":  "DENY"
+                                        },
+                                        {
+                                            "key":  "Permissions-Policy",
+                                            "value":  "camera=(), microphone=(), geolocation=()"
+                                        },
+                                        {
+                                            "key":  "Content-Security-Policy-Report-Only",
+                                            "value":  "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 data: blob:; font-src \u0027self\u0027; connect-src \u0027self\u0027 https://zekcnzndgfgykxakpifc.supabase.co; frame-src https://ester-quiz.lovable.app; frame-ancestors \u0027none\u0027; base-uri \u0027self\u0027; form-action \u0027self\u0027"
+                                        }
+                                    ]
+                    },
+                    {
+                        "source":  "/(.*)",
+                        "has":  [
+                                    {
+                                        "value":  "estergigi-homepage.vercel.app",
+                                        "type":  "host"
+                                    }
+                                ],
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex"
+                                        }
+                                    ]
+                    }
+                ]
 }

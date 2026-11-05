@@ -18,8 +18,10 @@ export default {
           rose: "#D4537E", // timeline
           "card-1": "#F392BF",
           "card-3": "#D93782",
+          // Accessible pink: white text on it, or it on white, passes 4.5:1 (the lighter brand pinks don't)
+          "pink-dark": "#D93782",
           purple: "#AE52FF",
-          olive: "#8BA404",
+          olive: "#5A6B00", // darkened from #8BA404 for 4.5:1 contrast on the light intro
           "intro-bg": "#F8F8F8",
           scroll: "#FF78B7",
           email: "#378ADD",
