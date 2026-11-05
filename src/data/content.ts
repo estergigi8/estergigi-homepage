@@ -3,7 +3,7 @@
 export const works = [
   {
     image: "/media/work-moms.jpg",
-    alt: "Artboard 1 Mockup (12)",
+    alt: "הדמיה של משחק האמהות האינטראקטיבי בטלפון",
     title: "משחק אמהות אינטראקטיבי למשיכת לידים",
     titleMobile: "משחק אמהות אינטראקטיבי למשיכת לידים",
     text: "איזה אמא את? עני על מספר שאלות קצרות לקבלת תעודת אמהות אישית.",
@@ -11,7 +11,7 @@ export const works = [
   },
   {
     image: "/media/work-english.png",
-    alt: "Natural Upcycle Sustainable Fashion Product Promotion Facebook Ad",
+    alt: "הדמיה של משחק האנגלית עם ציון וטיפים במחשב ובטלפון",
     title: "משחק אנגלית משולב אוטומציות AI בN8N",
     titleMobile: "משחק אנגלית משולב אוטומציות AI בN8N",
     text: "המשתמש מזין רמה ומקליט את עצמו באנגלית, הנתונים נשלחים ל-n8n לעיבוד וחזרים לאתר עם ציון וטיפים.",
@@ -20,7 +20,7 @@ export const works = [
   },
   {
     image: "/media/work-course.jpg",
-    alt: "Artboard 1 Mockup (7)",
+    alt: "הדמיה של דף מכירת הקורס הדיגיטלי במחשב",
     title: "דף מכירת קורס דיגיטלי + דף תשלום מאובטח",
     titleMobile: "דף מכירת + קורס דיגיטלי + דף תשלום מאובטח",
     text: "אתר למכירת קורס דיגיטלי עם דף מוצר, מבנה קורס ותשלום מאובטח דרך PayPal.",
@@ -28,7 +28,7 @@ export const works = [
   },
   {
     image: "/media/work-landing.jpg",
-    alt: "Artboard 1 Mockup (5)",
+    alt: "הדמיה של דף הנחיתה באנגלית ועברית במחשב",
     title: "דף נחיתה בסיסי ארוך אנגלית & עברית",
     titleMobile: "דף נחיתה בסיסי ארוך אנגלית & עברית",
     text: "דף נחיתה ארוך X2 אנגלית & עברית\nמיזם חדשני education & games",
@@ -42,10 +42,10 @@ export const logos = [
   { src: "/media/logo-ester.svg", alt: "אסתר" },
   { src: "/media/logo-hotam.svg", alt: "חותם" },
   { src: "/media/logo-brachot.svg", alt: "ברכות" },
-  { src: "/media/logo-tzchokia.svg", alt: "הצחוקיה" },
+  { src: "/media/logo-tzchokia.webp", alt: "הצחוקיה" },
 ];
-export const posters = ["/media/poster-1.png", "/media/poster-2.png", "/media/poster-3.png", "/media/poster-4.png", "/media/poster-5.png"];
-export const postersMobile = ["/media/poster-3.png", "/media/poster-1.png", "/media/poster-4.png", "/media/poster-2.png", "/media/poster-5.png"];
+export const posters = ["/media/poster-1.webp", "/media/poster-2.webp", "/media/poster-3.webp", "/media/poster-4.webp", "/media/poster-5.webp"];
+export const postersMobile = ["/media/poster-3.webp", "/media/poster-1.webp", "/media/poster-4.webp", "/media/poster-2.webp", "/media/poster-5.webp"];
 
 export const timeline = [
   {
